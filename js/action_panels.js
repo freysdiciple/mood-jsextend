@@ -72,6 +72,17 @@ function ssDropdownValue(name) {
         return 0;
 }
 
+function ssMultiDropdownValue(name, separator = ", "){
+    //Returns all chosen values in the multidropdown in the form:
+    //option1(separator)option2(separator)...(separator)optionN
+
+    //Get valuesfrom DOM    	
+    let selected = $(".mood-node-name-" + name + " .dx-list-item-selected .list-item-text");
+
+    //Return surrounded by fences
+    return selected.toArray().map(s => s.innerHTML).join(separator);
+}
+
 function ssRadiobuttons(name) {
     return $(".mood-node-name-" + name + " .dx-list-item-selected .list-item-text").text().trim();
 }
